@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+
+    <meta charset="utf-8">
+    <title>Book Manage Application</title>
+  </head>
+  <body>
+    <div class="container" ng-controller="AppCtrl">
+      <div class="row">
+        <div class="col-8">
+          <h1>  Book Manage Application </h1>
+        </div>
+        <div class="col-4">
+          <form ng-submit="searchBookList()">
+            <input class="form-control" placeholder="Search..." ng-model="book.searchBook">
+          </form>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="container">
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input class="form-control" ng-model="book.title"></td>
+            <td><input class="form-control" ng-model="book.author"></td>
+            <td><input class="form-control" ng-model="book.year"></td>
+            <td><input class="form-control" ng-model="book.genre"></td>
+            <td><button class="btn btn-primary" ng-click="addBookList()">Add</td>
+            <td><button class="btn btn-info" ng-click="update()">Update</td>
+          </tr>
+          <tr ng-repeat="book in bookList">
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.year}}</td>
+            <td>{{book.genre}}</td>
+            <td><button class="btn btn-danger" ng-click= "remove(book.id)">Remove</button></td>
+            <td><button class="btn btn-success" ng-click= "edit(book.id)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
+  </body>
+</html>
